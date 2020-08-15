@@ -15,6 +15,8 @@ class CreateReadingsTable extends Migration
     {
         Schema::create('readings', function (Blueprint $table) {
             $table->id();
+            $table->text('content');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }

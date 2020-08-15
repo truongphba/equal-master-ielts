@@ -15,6 +15,8 @@ class CreateListeningsTable extends Migration
     {
         Schema::create('listenings', function (Blueprint $table) {
             $table->id();
+            $table->text('audio');
+            $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });
     }
