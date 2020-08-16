@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ScheduleSeeder extends Seeder
 {
@@ -11,6 +12,11 @@ class ScheduleSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::table('schedules')->truncate();
+        DB::table('schedules')->insert([
+
+        ]);
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

@@ -17,6 +17,8 @@ class CreateSchedulesTable extends Migration
             $table->id();
             $table->unsignedBigInteger('examiner_id');
             $table->unsignedBigInteger('lecture_id');
+            $table->foreign('examiner_id')->references('id')->on('users');
+            $table->foreign('lecture_id')->references('id')->on('users');
             $table->dateTime('time');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();

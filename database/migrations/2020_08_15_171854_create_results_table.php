@@ -17,6 +17,8 @@ class CreateResultsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('examiner_id');
             $table->unsignedBigInteger('lecture_id');
+            $table->foreign('examiner_id')->references('id')->on('users');
+            $table->foreign('lecture_id')->references('id')->on('users');
             $table->tinyInteger('type');
             $table->integer('point');
             $table->text('comment')->nullable();
