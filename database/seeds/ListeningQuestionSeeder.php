@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class ListeningQuestionSeeder extends Seeder
 {
@@ -11,6 +12,11 @@ class ListeningQuestionSeeder extends Seeder
      */
     public function run()
     {
-        //
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+        DB::table('listeningQuestions')->truncate();
+        DB::table('listeningQuestions')->insert([
+
+        ]);
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

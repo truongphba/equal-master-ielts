@@ -20,6 +20,8 @@ class CreateWritingResultsTable extends Migration
             $table->unsignedBigInteger('examiner_id');
             $table->unsignedBigInteger('lecture_id');
             $table->tinyInteger('type');
+            $table->foreign('examiner_id')->references('id')->on('users');
+            $table->foreign('lecture_id')->references('id')->on('users');
             $table->integer('point');
             $table->text('comment')->nullable();
             $table->tinyInteger('status')->default(1);
