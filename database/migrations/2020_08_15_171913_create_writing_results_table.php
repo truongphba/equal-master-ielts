@@ -17,10 +17,10 @@ class CreateWritingResultsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('writing_answer_id');
             $table->foreign('writing_answer_id')->references('id')->on('writing_answers');
-            $table->unsignedBigInteger('examiner_id');
+            $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('lecture_id');
             $table->tinyInteger('type');
-            $table->foreign('examiner_id')->references('id')->on('users');
+            $table->foreign('student_id')->references('id')->on('users');
             $table->foreign('lecture_id')->references('id')->on('users');
             $table->integer('point');
             $table->text('comment')->nullable();
