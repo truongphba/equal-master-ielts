@@ -13,8 +13,8 @@ class WritingResultSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::table('writingResults')->truncate();
-        DB::table('writingResults')->insert([
+        DB::table('writing_results')->truncate();
+        DB::table('writing_results')->insert([
 
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');

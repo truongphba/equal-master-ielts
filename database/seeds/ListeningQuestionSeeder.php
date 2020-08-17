@@ -13,8 +13,8 @@ class ListeningQuestionSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::table('listeningQuestions')->truncate();
-        DB::table('listeningQuestions')->insert([
+        DB::table('listening_questions')->truncate();
+        DB::table('listening_questions')->insert([
 
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');

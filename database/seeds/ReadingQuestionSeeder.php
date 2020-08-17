@@ -13,8 +13,8 @@ class ReadingQuestionSeeder extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
-        DB::table('readingQuestions')->truncate();
-        DB::table('readingQuestions')->insert([
+        DB::table('reading_questions')->truncate();
+        DB::table('reading_questions')->insert([
 
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
