@@ -17,6 +17,7 @@ class CreateReadingQuestionsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('reading_id');
             $table->foreign('reading_id')->references('id')->on('readings');
+            $table->string('title');
             $table->text('answer');
             $table->string('correct_answer');
             $table->tinyInteger('status')->default(1);
