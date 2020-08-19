@@ -12,12 +12,13 @@ class AuthController extends Controller
     public function register(Request $request)
     {
         $request->validate([
-            'name' => 'required|min:3',
+            'name' => 'required|min:3|unique:App\User,name',
             'email' => 'required|unique:App\User,email|email',
             'password' => 'required|min:3',
             'age' => 'numeric',
             'balance' => 'numeric',
         ]);
+
         if ($request->input('is_lecture') == true) {
             $request->validate([
                 'certificate' => 'required',
