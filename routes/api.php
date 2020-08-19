@@ -15,4 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('register', 'Frontend\AuthController@register');
+
+Route::group(['prefix' => 'auth'], function () {
+    Route::post('register', 'Frontend\AuthController@register');
+    Route::post('login', 'Frontend\AuthController@login');
+    Route::post('logout', 'Frontend\AuthController@logout');
+});
