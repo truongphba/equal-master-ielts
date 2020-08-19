@@ -11,21 +11,23 @@ class AuthController extends Controller
 {
     public function register(Request $request)
     {
-        $request->validate([
-            'name' => 'required|min:3|unique:App\User,name',
-            'email' => 'required|unique:App\User,email|email',
-            'password' => 'required|min:3',
-            'age' => 'numeric',
-            'balance' => 'numeric',
-        ]);
-
         if ($request->input('is_lecture') == true) {
             $request->validate([
+                'name' => 'required|min:3|unique:App\User,name',
+                'email' => 'required|unique:App\User,email|email',
+                'password' => 'required|min:3',
+                'age' => 'numeric',
                 'certificate' => 'required',
             ]);
             $is_lecture = 1;
         }
         else{
+            $request->validate([
+                'name' => 'required|min:3|unique:App\User,name',
+                'email' => 'required|unique:App\User,email|email',
+                'password' => 'required|min:3',
+                'age' => 'numeric',
+            ]);
             $is_lecture = 0;
         }
         $user = User::insert([
