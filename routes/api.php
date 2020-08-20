@@ -1,5 +1,6 @@
 <?php
 
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,6 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::post('register', 'Frontend\AuthController@register');
+Route::post('login', 'Frontend\AuthController@login');
+Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('auth', 'Frontend\AuthController@user');
+    Route::post('logout', 'Frontend\AuthController@logout');
+});
+Route::middleware('jwt.refresh')->get('/token/refresh', 'Frontend\AuthController@refresh');
+
 Route::get('/index', 'Frontend\SiteController@index');
-Route::get('/layout', 'Frontend\SiteController@layout');
+
 
