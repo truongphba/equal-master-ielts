@@ -7,6 +7,10 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Facades\JWTAuth;
+
 class AuthController extends Controller
 {
     public function register(Request $request)
@@ -48,24 +52,39 @@ class AuthController extends Controller
             'user' => $user
         ], 200);
     }
-    public function login()
+    public function login(Request $request)
     {
-        $credentials = request(['email', 'password']);
-        if (!$token = auth('api')->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+        $credentials = $request->only('email', 'password');
+        if (!($token = JWTAuth::attempt($credentials))) {
+            return response()->json([
+                'status' => 'error',
+                'error' => 'invalid.credentials',
+                'msg' => 'Invalid Credentials.'
+            ], 400);
         }
 
-        return response()->json(auth('api')->user())->header('Authorization', $token);
+        return response()->json(['token' => $token],200);
     }
-    public function logout()
+    public function logout(Request $request)
     {
-        auth('api')->logout();
+        $this->validate($request, ['token' => 'required']);
 
-        return response()->json(['message' => 'Successfully logged out']);
+        try {
+            JWTAuth::invalidate($request->input('token'));
+            return response()->json('You have successfully logged out.', 200);
+        } catch (JWTException $e) {
+            return response()->json('Failed to logout, please try again.', 400);
+        }
     }
 
     public function user()
     {
-        return response()->json(auth('api')->user());
+        $user = Auth::user();
+
+        if ($user) {
+            return response()->json(['user' => $user],200);
+        }
+
+        return response()->json(null, 401);
     }
 }

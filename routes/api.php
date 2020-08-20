@@ -16,8 +16,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::group(['prefix' => 'auth'], function () {
-    Route::post('register', 'Frontend\AuthController@register');
-    Route::post('login', 'Frontend\AuthController@login');
+Route::post('register', 'Frontend\AuthController@register');
+Route::post('login', 'Frontend\AuthController@login');
+Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('auth', 'Frontend\AuthController@user');
     Route::post('logout', 'Frontend\AuthController@logout');
 });
+Route::middleware('jwt.refresh')->get('/token/refresh', 'Frontend\AuthController@refresh');
+
