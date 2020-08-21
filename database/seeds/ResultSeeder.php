@@ -29,7 +29,7 @@ class ResultSeeder extends Seeder
             [
                 'id' => 2,
                 'student_id' => 2,
-                'lecture_id' => null,
+                'lecture_id' => 17,
                 'type' => 2,
                 'point' => 8.0,
                 'comment' => 'Good interaction with student',
@@ -62,7 +62,7 @@ class ResultSeeder extends Seeder
             [
                 'id' => 5,
                 'student_id' => 5,
-                'lecture_id' => null,
+                'lecture_id' => 48,
                 'type' => 2,
                 'point' => 7.0,
                 'comment' => 'Good interaction with student',
@@ -95,7 +95,7 @@ class ResultSeeder extends Seeder
             [
                 'id' => 8,
                 'student_id' => 6,
-                'lecture_id' => null,
+                'lecture_id' => 46,
                 'type' => 2,
                 'point' => 8.0,
                 'comment' => 'Good interaction with student',
@@ -128,7 +128,7 @@ class ResultSeeder extends Seeder
             [
                 'id' => 11,
                 'student_id' => 10,
-                'lecture_id' => null,
+                'lecture_id' => 31,
                 'type' => 2,
                 'point' => 8.0,
                 'comment' => 'Excellent',
@@ -161,7 +161,7 @@ class ResultSeeder extends Seeder
             [
                 'id' => 14,
                 'student_id' => 14,
-                'lecture_id' => null,
+                'lecture_id' => 30,
                 'type' => 2,
                 'point' => 8.0,
                 'comment' => 'Excellent',
@@ -194,7 +194,7 @@ class ResultSeeder extends Seeder
             [
                 'id' => 17,
                 'student_id' => 15,
-                'lecture_id' => null,
+                'lecture_id' => 16,
                 'type' => 2,
                 'point' => 8.0,
                 'comment' => 'Excellent',
@@ -217,7 +217,7 @@ class ResultSeeder extends Seeder
                 'id' => 19,
                 'student_id' => `18`,
                 'lecture_id' => null,
-                'type' => 1,
+                'type' => 1,'type' => 1,
                 'point' => 7.0,
                 'comment' => null,
                 'status' => 1,
@@ -227,7 +227,7 @@ class ResultSeeder extends Seeder
             [
                 'id' => 20,
                 'student_id' => 18,
-                'lecture_id' => null,
+                'lecture_id' => 50,
                 'type' => 2,
                 'point' => 8.0,
                 'comment' => 'Good interaction with student',
