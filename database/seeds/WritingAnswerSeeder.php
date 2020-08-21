@@ -16,6 +16,7 @@ class WritingAnswerSeeder extends Seeder
         DB::table('writing_answers')->truncate();
         DB::table('writing_answers')->insert([
 
+
                 [
                     'id' => 1,
                     'writing_id'=>1,
