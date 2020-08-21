@@ -17,3 +17,5 @@ use Illuminate\Support\Facades\Route;
 Route::get('/index', 'Frontend\SiteController@index');
 Route::get('/layout', 'Frontend\SiteController@layout');
 
+
+//
