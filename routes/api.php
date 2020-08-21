@@ -23,6 +23,6 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 });
 Route::middleware('jwt.refresh')->get('/token/refresh', 'Frontend\AuthController@refresh');
 
-Route::get('/index', 'Frontend\SiteController@index');
+Route::get('index', 'Frontend\SiteController@index');
 
 
