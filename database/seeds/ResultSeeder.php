@@ -215,9 +215,9 @@ class ResultSeeder extends Seeder
             ],
             [
                 'id' => 19,
-                'student_id' => `18`,
+                'student_id' => 18,
                 'lecture_id' => null,
-                'type' => 1,'type' => 1,
+                'type' => 1,
                 'point' => 7.0,
                 'comment' => null,
                 'status' => 1,

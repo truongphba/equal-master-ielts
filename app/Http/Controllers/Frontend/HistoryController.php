@@ -4,38 +4,21 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Result;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
-    public function index()
+    public function history(Request $r)
     {
-        $result = Result::all();
-        return response()->json($result);
+    $results = Result::where('student_id', 2)->orderBy('created_at', 'desc')->get();
+    foreach ($results as $result){
+        $result->student;
+        $result->lecture;
     }
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    public function show($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
-
+        return response([
+            'history'=>$results,
+        ],200);
     }
 }
