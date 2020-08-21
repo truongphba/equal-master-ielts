@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
-use App\ReadingQuestion;
 use App\Reading;
-use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ReadingController extends Controller
 {

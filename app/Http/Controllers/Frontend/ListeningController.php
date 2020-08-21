@@ -4,10 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Listening;
-use App\User;
-use App\ListeningQuestion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class ListeningController extends Controller
 {
