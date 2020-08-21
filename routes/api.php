@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
+Route::post('writing', 'Frontend\AuthController@writing');
+Route::post('reading', 'Frontend\AuthController@reading');
+Route::post('listening', 'Frontend\AuthController@listening');
+Route::post('results', 'Frontend\AuthController@results');
 
 Route::get('/index', 'Frontend\SiteController@index');
 Route::get('/layout', 'Frontend\SiteController@layout');
