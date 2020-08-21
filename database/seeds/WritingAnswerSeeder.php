@@ -15,7 +15,8 @@ class WritingAnswerSeeder extends Seeder
         DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         DB::table('writing_answers')->truncate();
         DB::table('writing_answers')->insert([
-            [
+
+
                 [
                     'id' => 1,
                     'writing_id'=>1,
@@ -202,7 +203,7 @@ vital medical research until equally effective alternatives have been developed.
                     'created_at' => \Illuminate\Support\Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
                     'updated_at' => \Illuminate\Support\Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
                 ],
-            ],
+
 
         ]);
         DB::statement('SET FOREIGN_KEY_CHECKS = 1');
