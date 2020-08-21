@@ -6,12 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Result extends Model
 {
-    public function examiner()
+    public function student()
     {
-        return $this->belongsTo('App\User','examiner_id');
+        return $this->belongsTo('App\User','student_id','id');
     }
     public function lecture()
     {
-        return $this->belongsTo('App\User','lecture_id');
+        return $this->belongsTo('App\User','lecture_id','id');
     }
 }
