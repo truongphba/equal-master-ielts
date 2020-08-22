@@ -10,9 +10,9 @@ class WritingResult extends Model
     {
         return $this->belongsTo('App\WritingAnswer');
     }
-    public function examiner()
+    public function student()
     {
-        return $this->belongsTo('App\User','examiner_id');
+        return $this->belongsTo('App\User','student_id');
     }
     public function lecture()
     {

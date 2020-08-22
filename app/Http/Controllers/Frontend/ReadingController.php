@@ -3,39 +3,21 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Listening;
+use App\ListeningQuestion;
 use App\Reading;
+use App\ReadingQuestion;
 use Illuminate\Http\Request;
 
 class ReadingController extends Controller
 {
-        public function index()
+        public function reading()
     {
-        $read = Reading::all();
-        return response()->json($read);
-    }
-
-
-        public function store(Request $request)
-    {
-        //
-    }
-
-
-        public function show($id)
-    {
-        //
-    }
-
-
-        public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-        public function destroy($id)
-    {
-        //
-
+        $reading=Reading::inRandomOrder()->first();
+        $readingQuestion=ReadingQuestion::where('reading_id',$reading->id)->get();
+        return response([
+            'listening'=>$reading,
+            'listeningQuestion'=>$readingQuestion
+        ]);
     }
 }
