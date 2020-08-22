@@ -12,13 +12,13 @@ class HistoryController extends Controller
 {
     public function history(Request $r)
     {
-    $results = Result::where('student_id', 2)->orderBy('created_at', 'desc')->get();
-    foreach ($results as $result){
-        $result->student;
-        $result->lecture;
-    }
+        $results = Result::where('student_id', 2)->orderBy('created_at', 'desc')->get();
+        foreach ($results as $result) {
+            $result->student_name=$result->student->full_name;
+            $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
+        }
         return response([
-            'history'=>$results,
-        ],200);
+            'history' => $results,
+        ], 200);
     }
 }
