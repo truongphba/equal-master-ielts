@@ -36,7 +36,7 @@ Route::get('/result', 'Frontend\ResultController@index');
 Route::get('/reading', 'Frontend\ReadingController@index');
 Route::get('/listening', 'Frontend\ListeningController@index');
 Route::get('/writing', 'Frontend\WritingController@index');
+Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
 
 
 
-//
