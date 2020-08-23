@@ -38,6 +38,7 @@ class HistoryController extends Controller
     public function readHistory($id){
         $results = Result::where('student_id', '=', $id)->where('type', '=', 1)->orderByDesc('created_at')->get();
         foreach ($results as $result) {
+
             $result->student_name=$result->student?$result->student->full_name:"";
             $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
             $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y H:i:s'):"";
@@ -49,6 +50,7 @@ class HistoryController extends Controller
     public function writeHistory($id){
         $results = WritingResult::where('student_id', '=', $id)->orderByDesc('created_at')->get();
         foreach ($results as $result){
+
             $result->student_name=$result->student?$result->student->full_name:"";
             $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
             $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y H:i:s'):"";
