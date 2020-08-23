@@ -4,38 +4,18 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Listening;
+use App\ListeningQuestion;
 use Illuminate\Http\Request;
 
 class ListeningController extends Controller
 {
-    public function index()
+    public function listening()
     {
-        $listen = Listening::all();
-        return response()->json($listen);
-    }
-
-
-    public function store(Request $request)
-    {
-        //
-    }
-
-
-    public function show($id)
-    {
-        //
-    }
-
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-
-    public function destroy($id)
-    {
-        //
-
+        $listening=Listening::inRandomOrder()->first();
+        $listeningQuestion=ListeningQuestion::where('listening_id',$listening->id)->get();
+        return response([
+            'listening'=>$listening,
+            'listeningQuestion'=>$listeningQuestion
+        ]);
     }
 }

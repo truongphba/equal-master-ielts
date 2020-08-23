@@ -19,7 +19,6 @@ class CreateWritingResultsTable extends Migration
             $table->foreign('writing_answer_id')->references('id')->on('writing_answers');
             $table->unsignedBigInteger('student_id');
             $table->unsignedBigInteger('lecture_id');
-            $table->tinyInteger('type');
             $table->foreign('student_id')->references('id')->on('users');
             $table->foreign('lecture_id')->references('id')->on('users');
             $table->integer('point');
