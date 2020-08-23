@@ -31,7 +31,8 @@ Route::get('/writing', 'Frontend\WritingController@writing');
 
 //writing
 
+Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
 
 
 
-//
+
