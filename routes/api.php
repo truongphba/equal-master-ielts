@@ -35,7 +35,8 @@ Route::get('/writeHistory/{id}', 'Frontend\HistoryController@writeHistory');
 
 //writing
 
+Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
 
 
 
-//
+
