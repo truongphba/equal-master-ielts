@@ -24,14 +24,19 @@ Route::middleware('jwt.refresh')->get('/token/refresh', 'Frontend\AuthController
 //Route::get('/result', 'Frontend\ResultController@index');
 //api Bằng viết
 Route::get('/index', 'Frontend\SiteController@index');
-Route::get('/history', 'Frontend\HistoryController@history');
 Route::get('/listening', 'Frontend\ListeningController@listening');
 Route::get('/reading', 'Frontend\ReadingController@reading');
 Route::get('/writing', 'Frontend\WritingController@writing');
 
+Route::get('/listenHistory/{id}', 'Frontend\HistoryController@listenHistory');
+Route::get('/readHistory/{id}', 'Frontend\HistoryController@readHistory');
+Route::get('/speakHistory/{id}', 'Frontend\HistoryController@speakHistory');
+Route::get('/writeHistory/{id}', 'Frontend\HistoryController@writeHistory');
+
 //writing
 
+Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
 
 
 
-//
+

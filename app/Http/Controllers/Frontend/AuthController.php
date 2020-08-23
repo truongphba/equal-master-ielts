@@ -8,6 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Tymon\JWTAuth\Exceptions\JWTException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
@@ -45,9 +46,17 @@ class AuthController extends Controller
             'votes' => 5,
             'is_admin' => 0,
             'is_lecture' => $is_lecture,
+            'status' => 0,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
+        $data = array(
+            'full_name' => $request->input('full_name')
+        );
+        Mail::send('send', $data, function ($message) use ($request) {
+            $message->to($request->input('email'), 'Tutorials Point')->subject('Xác Thực Email Đăng ký');
+            $message->from('truongph.ba@gmail.com', 'Trường');
+        });
         return response([
             'user' => $user
         ], 200);
@@ -84,5 +93,9 @@ class AuthController extends Controller
         }
 
         return response()->json(null, 401);
+    }
+
+    public function active(Request $request){
+
     }
 }
