@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class UserSeeder exten\nds Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
