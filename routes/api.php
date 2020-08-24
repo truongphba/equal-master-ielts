@@ -34,9 +34,21 @@ Route::get('/speakHistory/{id}', 'Frontend\HistoryController@speakHistory');
 Route::get('/writeHistory/{id}', 'Frontend\HistoryController@writeHistory');
 
 //writing
-
 Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
 
+//crud writing
+//writing
+Route::get('/createWriting', 'Frontend\WritingController@createWriting');
+Route::get('/updateWriting', 'Frontend\WritingController@updateWriting');
+Route::get('/readWriting', 'Frontend\WritingController@readWriting');
+//writingAnswer
+Route::get('/createWritingAnswer', 'Frontend\WritingController@createWritingAnswer');
+Route::get('/updateWritingAnswer', 'Frontend\WritingController@updateWritingAnswer');
+Route::get('/readWritingAnswer', 'Frontend\WritingController@readWritingAnswer');
+//writingResult
+Route::get('/createWritingResult', 'Frontend\WritingController@createWritingResult');
+Route::get('/updateWritingResult', 'Frontend\WritingController@updateWritingResult');
+Route::get('/readWritingResult', 'Frontend\WritingController@readWritingResult');
 
 
 
