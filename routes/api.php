@@ -38,21 +38,21 @@ Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
 
 //crud writing
 //writing
-Route::post('/createWriting', 'Frontend\WritingController@createWriting');
-Route::post('/updateWriting', 'Frontend\WritingController@updateWriting');
-Route::get('/readWriting', 'Frontend\WritingController@readWriting');
+Route::post('/createWriting', 'Backend\WritingController@createWriting');
+Route::post('/updateWriting', 'Backend\WritingController@updateWriting');
+Route::get('/readWriting', 'Backend\WritingController@readWriting');
 //writingAnswer
-Route::post('/createWritingAnswer', 'Frontend\WritingController@createWritingAnswer');
-Route::post('/updateWritingAnswer', 'Frontend\WritingController@updateWritingAnswer');
-Route::get('/readWritingAnswer', 'Frontend\WritingController@readWritingAnswer');
+Route::post('/createWritingAnswer', 'Backend\WritingController@createWritingAnswer');
+Route::post('/updateWritingAnswer', 'Backend\WritingController@updateWritingAnswer');
+Route::get('/readWritingAnswer', 'Backend\WritingController@readWritingAnswer');
 //writingResult
-Route::post('/createWritingResult', 'Frontend\WritingController@createWritingResult');
-Route::post('/updateWritingResult', 'Frontend\WritingController@updateWritingResult');
-Route::get('/readWritingResult', 'Frontend\WritingController@readWritingResult');
+Route::post('/createWritingResult', 'Backend\WritingController@createWritingResult');
+Route::post('/updateWritingResult', 'Backend\WritingController@updateWritingResult');
+Route::get('/readWritingResult', 'Backend\WritingController@readWritingResult');
 //crud User
-Route::post('/createUser', 'Frontend\UserController@createUser');
-Route::post('/updateUser', 'Frontend\UserController@updateUser');
-Route::get('/readUser', 'Frontend\UserController@readUser');
+Route::post('/createUser', 'Backend\UserController@createUser');
+Route::post('/updateUser', 'Backend\UserController@updateUser');
+Route::get('/readUser', 'Backend\UserController@readUser');
 
 
 
