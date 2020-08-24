@@ -24,7 +24,7 @@ class WritingSeeder extends Seeder
             ],
             [
                 'id' => 2,
-                'content' => 'Countries should try to produce all the food that their population eats and import as little as possible\nTo what extent do you agree or disagree?"',
+                'content' => 'Countries should try to produce all the food that their population eats and import as little as possible </br> To what extent do you agree or disagree?"',
                 'status' => 1,
                 'created_at' => \Illuminate\Support\Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
                 'updated_at' => \Illuminate\Support\Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
@@ -38,7 +38,7 @@ class WritingSeeder extends Seeder
             ],
             [
                 'id' => 4,
-                'content' => 'Many young people like international pop and movie stars more than famous people in history of their country.\nWhy? And give the solutions to increase young people’s interest in famous pp in famous pp in history of their country.',
+                'content' => 'Many young people like international pop and movie stars more than famous people in history of their country.</br> Why? And give the solutions to increase young people’s interest in famous pp in famous pp in history of their country.',
                 'status' => 1,
                 'created_at' => \Illuminate\Support\Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
                 'updated_at' => \Illuminate\Support\Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
@@ -94,7 +94,7 @@ class WritingSeeder extends Seeder
             ],
             [
                 'id' => 12,
-                'content' => 'Nowadays animal experiments are widely used to develop new medicines and to test the safety of other products. Some people argue that these experiments should be banned because it is morally wrong to cause animals to suffer, while others are in favour of them because of their benefits to humanity.\nDiscuss both views and give your own opinion ',
+                'content' => 'Nowadays animal experiments are widely used to develop new medicines and to test the safety of other products. Some people argue that these experiments should be banned because it is morally wrong to cause animals to suffer, while others are in favour of them because of their benefits to humanity.</br> both views and give your own opinion ',
                 'status' => 1,
                 'created_at' => \Illuminate\Support\Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
                 'updated_at' => \Illuminate\Support\Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),
