@@ -33,8 +33,11 @@ Route::get('/readHistory/{id}', 'Frontend\HistoryController@readHistory');
 Route::get('/speakHistory/{id}', 'Frontend\HistoryController@speakHistory');
 Route::get('/writeHistory/{id}', 'Frontend\HistoryController@writeHistory');
 
-//writing
+
 Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
+//writing
+//speaking
+Route::get('/speaking-question', 'Frontend\SpeakingController@speaking');
 
 //crud writing
 //writing
