@@ -38,6 +38,7 @@ Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
 //writing
 //speaking
 Route::get('/speaking-question', 'Frontend\SpeakingController@speaking');
+Route::get('/lecture/{id}', 'Frontend\SiteController@getLecture');
 
 //crud writing
 //writing

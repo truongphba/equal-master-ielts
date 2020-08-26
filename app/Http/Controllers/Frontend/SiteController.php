@@ -30,10 +30,9 @@ class SiteController extends Controller
         ], 200);
     }
 
-    public function getLecture(Request $request)
+    public function getLecture($id)
     {
-        $lectureId = $request->get('lectureId');
-        $lecture = User::where('id', $lectureId)->first();
+        $lecture = User::where('id', $id)->first();
         return response([
             'lecture' => $lecture
         ],200);
