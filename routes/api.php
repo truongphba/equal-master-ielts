@@ -34,9 +34,25 @@ Route::get('/speakHistory/{id}', 'Frontend\HistoryController@speakHistory');
 Route::get('/writeHistory/{id}', 'Frontend\HistoryController@writeHistory');
 
 //writing
-
 Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
 
+//crud writing
+//writing
+Route::post('/createWriting', 'Backend\WritingController@createWriting');
+Route::post('/updateWriting', 'Backend\WritingController@updateWriting');
+Route::get('/readWriting', 'Backend\WritingController@readWriting');
+//writingAnswer
+Route::post('/createWritingAnswer', 'Backend\WritingController@createWritingAnswer');
+Route::post('/updateWritingAnswer', 'Backend\WritingController@updateWritingAnswer');
+Route::get('/readWritingAnswer', 'Backend\WritingController@readWritingAnswer');
+//writingResult
+Route::post('/createWritingResult', 'Backend\WritingController@createWritingResult');
+Route::post('/updateWritingResult', 'Backend\WritingController@updateWritingResult');
+Route::get('/readWritingResult', 'Backend\WritingController@readWritingResult');
+//crud User
+Route::post('/createUser', 'Backend\UserController@createUser');
+Route::post('/updateUser', 'Backend\UserController@updateUser');
+Route::get('/readUser', 'Backend\UserController@readUser');
 
 
 
