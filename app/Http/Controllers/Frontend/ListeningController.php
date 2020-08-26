@@ -13,9 +13,6 @@ class ListeningController extends Controller
     {
         $listening=Listening::inRandomOrder()->first();
         $listeningQuestion=ListeningQuestion::where('listening_id',$listening->id)->get();
-        return response([
-            'listening'=>$listening,
-            'listeningQuestion'=>$listeningQuestion
-        ]);
+        return response()->json([$listening, $listeningQuestion], 200);
     }
 }

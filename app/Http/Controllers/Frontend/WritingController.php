@@ -11,9 +11,8 @@ class WritingController extends Controller
 {
     public function writing()
     {
-        return response([
-            'writing'=>Writing::inRandomOrder()->first()
-        ]);
+        $write = Writing::inRandomOrder()->first();
+        return response()->json($write, 200);
     }
 
 }

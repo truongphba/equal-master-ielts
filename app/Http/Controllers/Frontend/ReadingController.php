@@ -15,9 +15,6 @@ class ReadingController extends Controller
     {
         $reading=Reading::inRandomOrder()->first();
         $readingQuestion=ReadingQuestion::where('reading_id',$reading->id)->get();
-        return response([
-            'listening'=>$reading,
-            'listeningQuestion'=>$readingQuestion
-        ]);
+        return response()->json([$reading, $readingQuestion], 200);
     }
 }
