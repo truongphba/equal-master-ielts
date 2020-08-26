@@ -68,8 +68,8 @@ class AuthController extends Controller
                 'error' => true,
             ], 400);
         }
-
-        return response()->json(['token' => $token],200);
+        $lecture = User::where('email',$request->input('email'))->first();
+        return response()->json(['token' => $token, 'lecture' => $lecture],200);
     }
     public function logout(Request $request)
     {
