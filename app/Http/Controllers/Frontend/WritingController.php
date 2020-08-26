@@ -6,14 +6,14 @@ use App\Http\Controllers\Controller;
 use App\Reading;
 use App\ReadingQuestion;
 use App\Writing;
+use App\WritingAnswer;
 use Illuminate\Http\Request;
 
 class WritingController extends Controller
 {
     public function writing()
     {
-        return response([
-            'writing'=>Writing::inRandomOrder()->first()
-        ]);
+        $write = Writing::inRandomOrder()->first();
+        return response()->json($write, 200);
     }
 }
