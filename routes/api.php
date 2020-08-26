@@ -53,6 +53,15 @@ Route::get('/readWritingResult', 'Backend\WritingController@readWritingResult');
 Route::post('/createUser', 'Backend\UserController@createUser');
 Route::post('/updateUser', 'Backend\UserController@updateUser');
 Route::get('/readUser', 'Backend\UserController@readUser');
+//crud Reading
+//reading
+Route::post('/createReading', 'Backend\ReadingController@createReading');
+Route::post('/updateReading', 'Backend\ReadingController@updateReading');
+Route::get('/readReading', 'Backend\ReadingController@readReading');
+//reading question
+Route::post('/createReadingQuestion', 'Backend\ReadingController@createReadingQuestion');
+Route::post('/updateReadingQuestion', 'Backend\ReadingController@updateReadingQuestion');
+Route::get('/readReadingQuestion', 'Backend\ReadingController@readReadingQuestion');
 
 
 
