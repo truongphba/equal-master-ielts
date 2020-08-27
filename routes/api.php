@@ -55,8 +55,11 @@ Route::post('/updateUser', 'Backend\UserController@updateUser');
 Route::get('/readUser', 'Backend\UserController@readUser');
 Route::get('/getUser', 'Backend\UserController@getUser');
 
-
+//api submit listen, read, write
 Route::post('/storeListen', 'Frontend\ListeningController@storeResult');
+Route::post('/storeRead', 'Frontend\ReadingController@storeResult');
+Route::post('/storeWrite', 'Frontend\WritingController@storeResult');
+
 //crud Reading
 //reading
 Route::post('/createReading', 'Backend\ReadingController@createReading');
