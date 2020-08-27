@@ -55,6 +55,29 @@ Route::post('/updateUser', 'Backend\UserController@updateUser');
 Route::get('/readUser', 'Backend\UserController@readUser');
 Route::get('/getUser', 'Backend\UserController@getUser');
 
-//submit listening
+
 Route::post('/storeListen', 'Frontend\ListeningController@storeResult');
+//crud Reading
+//reading
+Route::post('/createReading', 'Backend\ReadingController@createReading');
+Route::post('/updateReading', 'Backend\ReadingController@updateReading');
+Route::get('/readReading', 'Backend\ReadingController@readReading');
+//reading question
+Route::post('/createReadingQuestion', 'Backend\ReadingController@createReadingQuestion');
+Route::post('/updateReadingQuestion', 'Backend\ReadingController@updateReadingQuestion');
+Route::get('/readReadingQuestion', 'Backend\ReadingController@readReadingQuestion');
+//crud Listening
+//listening
+Route::post('/createListening', 'Backend\ListeningController@createListening');
+Route::post('/updateListening', 'Backend\ListeningController@updateListening');
+Route::get('/readListening', 'Backend\ListeningController@readListening');
+//listening question
+Route::post('/createListeningQuestion', 'Backend\ListeningController@createListeningQuestion');
+Route::post('/updateListeningQuestion', 'Backend\ListeningController@updateListeningQuestion');
+Route::get('/readListeningQuestion', 'Backend\ListeningController@readListeningQuestion');
+//crud Speaking
+Route::post('/createSpeaking', 'Backend\SpeakingController@createSpeaking');
+Route::post('/updateSpeaking', 'Backend\SpeakingController@updateSpeaking');
+Route::get('/readSpeaking', 'Backend\SpeakingController@readSpeaking');
+
 
