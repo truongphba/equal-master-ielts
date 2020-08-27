@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 class Usercontroller extends Controller
@@ -65,5 +66,14 @@ class Usercontroller extends Controller
     {
         $u = User::find($r->get("id"));
         return response()->json($u);
+    }
+
+    public function getUser(){
+        $users = User::all();
+        foreach ($users as $user){
+            $user->format_date = $user->created_at?$user->created_at->format('d-m-Y'):"";
+        }
+        return response()->json($users, 200);
+
     }
 }

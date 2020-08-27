@@ -53,6 +53,8 @@ Route::get('/readWritingResult', 'Backend\WritingController@readWritingResult');
 Route::post('/createUser', 'Backend\UserController@createUser');
 Route::post('/updateUser', 'Backend\UserController@updateUser');
 Route::get('/readUser', 'Backend\UserController@readUser');
+Route::get('/getUser', 'Backend\UserController@getUser');
 
-
+//submit listening
+Route::post('/storeListen', 'Frontend\ListeningController@storeResult');
 
