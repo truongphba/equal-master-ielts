@@ -43,20 +43,53 @@ Route::get('/lecture/{id}', 'Frontend\SiteController@getLecture');
 //crud writing
 //writing
 Route::post('/createWriting', 'Backend\WritingController@createWriting');
-Route::post('/updateWriting', 'Backend\WritingController@updateWriting');
-Route::get('/readWriting', 'Backend\WritingController@readWriting');
+Route::post('/updateWriting/{id}', 'Backend\WritingController@updateWriting');
+Route::post('/deleteWriting/{id}', 'Backend\WritingController@deleteWriting');
+Route::get('/getWrite', 'Backend\WritingController@getWrite');
 //writingAnswer
-Route::post('/createWritingAnswer', 'Backend\WritingController@createWritingAnswer');
-Route::post('/updateWritingAnswer', 'Backend\WritingController@updateWritingAnswer');
-Route::get('/readWritingAnswer', 'Backend\WritingController@readWritingAnswer');
+Route::post('/deleteWritingAnswer/{id}', 'Backend\WritingController@deleteWritingAnswer');
+Route::get('/getWritingAnswer', 'Backend\WritingController@getWritingAnswer');
 //writingResult
 Route::post('/createWritingResult', 'Backend\WritingController@createWritingResult');
 Route::post('/updateWritingResult', 'Backend\WritingController@updateWritingResult');
 Route::get('/readWritingResult', 'Backend\WritingController@readWritingResult');
 //crud User
 Route::post('/createUser', 'Backend\UserController@createUser');
-Route::post('/updateUser', 'Backend\UserController@updateUser');
+Route::post('/updateUser/{id}', 'Backend\UserController@updateUser');
 Route::get('/readUser', 'Backend\UserController@readUser');
+Route::get('/getUser', 'Backend\UserController@getUser');
 
+//api submit listen, read, write
+Route::post('/storeListen', 'Frontend\ListeningController@storeResult');
+Route::post('/storeRead', 'Frontend\ReadingController@storeResult');
+Route::post('/storeWrite', 'Frontend\WritingController@storeResult');
+
+//crud Reading
+//reading
+Route::post('/createReading', 'Backend\ReadingController@createReading');
+Route::post('/updateReading/{id}', 'Backend\ReadingController@updateReading');
+Route::post('/deleteReading/{id}', 'Backend\ReadingController@deleteReading');
+Route::get('/getRead', 'Backend\ReadingController@getRead');
+//reading question
+Route::post('/createReadingQuestion', 'Backend\ReadingController@createReadingQuestion');
+Route::post('/updateReadingQuestion/{id}', 'Backend\ReadingController@updateReadingQuestion');
+Route::get('/getReadingQuestion/{id}', 'Backend\ReadingController@getReadingQuestion');
+Route::post('/deleteReadingQuestion/{id}', 'Backend\ReadingController@deleteReadingQuestion');
+//crud Listening
+//listening
+Route::post('/createListening', 'Backend\ListeningController@createListening');
+Route::post('/updateListening/{id}', 'Backend\ListeningController@updateListening');
+Route::post('/deleteListening/{id}', 'Backend\ListeningController@deleteListening');
+Route::get('/readListening', 'Backend\ListeningController@readListening');
+Route::get('getListen', 'Backend\ListeningController@getListen');
+//listening question
+Route::post('/createListeningQuestion', 'Backend\ListeningController@createListeningQuestion');
+Route::post('/updateListeningQuestion/{id}', 'Backend\ListeningController@updateListeningQuestion');
+Route::post('/deleteListeningQuestion/{id}', 'Backend\ListeningController@deleteListeningQuestion');
+Route::get('/getListeningQuestion/{id}', 'Backend\ListeningController@getListeningQuestion');
+//crud Speaking
+Route::post('/createSpeaking', 'Backend\SpeakingController@createSpeaking');
+Route::post('/updateSpeaking', 'Backend\SpeakingController@updateSpeaking');
+Route::get('/readSpeaking', 'Backend\SpeakingController@readSpeaking');
 
 

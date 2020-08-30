@@ -10,4 +10,8 @@ class WritingAnswer extends Model
     {
         return $this->belongsTo('App\Writing');
     }
+
+    public function student(){
+        return $this->belongsTo('App\User','student_id','id');
+    }
 }

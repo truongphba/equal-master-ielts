@@ -18,8 +18,8 @@ class HistoryController extends Controller
         foreach ($results as $result) {
             $result->student_name=$result->student?$result->student->full_name:"";
             $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
-            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y H:i:s'):"";
-            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y H:i:s'):"";
+            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y'):"";
+            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y'):"";
         }
         return response()->json($results, 200);
     }
@@ -29,8 +29,8 @@ class HistoryController extends Controller
         foreach ($results as $result) {
             $result->student_name=$result->student?$result->student->full_name:"";
             $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
-            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y H:i:s'):"";
-            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y H:i:s'):"";
+            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y'):"";
+            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y'):"";
         }
         return response()->json($results, 200);
     }
@@ -41,8 +41,8 @@ class HistoryController extends Controller
 
             $result->student_name=$result->student?$result->student->full_name:"";
             $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
-            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y H:i:s'):"";
-            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y H:i:s'):"";
+            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y'):"";
+            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y'):"";
         }
         return response()->json($results, 200);
     }
@@ -53,8 +53,8 @@ class HistoryController extends Controller
 
             $result->student_name=$result->student?$result->student->full_name:"";
             $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
-            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y H:i:s'):"";
-            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y H:i:s'):"";
+            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y'):"";
+            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y'):"";
             $result->answer=$result->writingAnswer->answer;
         }
         return response()->json($results, 200);
