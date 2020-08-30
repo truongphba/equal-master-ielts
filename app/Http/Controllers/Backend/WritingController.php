@@ -45,8 +45,8 @@ class WritingController extends Controller
     }
 
     //writing answer
-    public function getWritingAnswer($id){
-        $writeA = WritingAnswer::where('writing_id', '=', $id)->where('status', '=', 1)->get();
+    public function getWritingAnswer(){
+        $writeA = WritingAnswer::where('status', '=', 1)->get();
         foreach ($writeA as $answer){
             $answer->created_at_format = $answer->created_at ? $answer->created_at->format('d-m-Y') : "";
             $answer->updated_at_format = $answer->updated_at ? $answer->updated_at->format('d-m-Y') : "";
