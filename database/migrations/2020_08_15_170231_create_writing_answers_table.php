@@ -18,6 +18,7 @@ class CreateWritingAnswersTable extends Migration
             $table->unsignedBigInteger('writing_id');
             $table->foreign('writing_id')->references('id')->on('writings');
             $table->unsignedBigInteger('student_id');
+            $table->foreign('student_id')->references('id')->on('users');
             $table->text('answer');
             $table->tinyInteger('status')->default(1);
             $table->timestamps();

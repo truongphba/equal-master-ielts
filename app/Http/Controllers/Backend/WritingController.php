@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Frontend;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Writing;
@@ -10,80 +10,56 @@ use Illuminate\Http\Request;
 class WritingController extends Controller
 {
     //writing
-    public function createWriting(Request $r)
-    {
-        $w = new  Writing();
-        $w->content = $r->get('content');
-        $w->status = 1;
-        $w->save();
-        return response()->json($w);
+    public function getWrite(){
+        $writes = Writing::where('status', '=', 1)->get();
+        foreach ($writes as $write){
+            $write->created_at_format = $write->created_at ? $write->created_at->format('d-m-Y') : "";
+            $write->updated_at_format = $write->updated_at ? $write->updated_at->format('d-m-Y') : "";
+        }
+        return response()->json($writes, 200);
     }
 
-    public function updateWriting(Request $r) //delete = update 'status'
+    public function createWriting(Request $r)
     {
-        $w = Writing::find($r->get("id"));
-        $w->content = $r->get('content');
-        $w->status = $r->get('status');
-        $w->save();
-        return response()->json($w);
+        $writing = new  Writing();
+        $writing->content = $r->input('content');
+        $writing->status = 1;
+        $writing->save();
+        return response()->json($writing);
     }
-    public function readWriting(Request $r) //delete = update 'status'
+
+    public function updateWriting(Request $r, $id)
     {
-        $w = Writing::find($r->get("id"));
-        return response()->json($w);
+        $writing = Writing::find($id);
+        $writing->content = $r->input('content');
+        $writing->save();
+        return response()->json($writing, 200);
     }
-    //anser
-    public function createWritingAnswer(Request $r)
+
+    public function deleteWriting($id)
     {
-        $wA = new  WritingAnswer();
-        $wA->writing_id = $r->get('writing_id');
-        $wA->student_id = $r->get('student_id');
-        $wA->answer = $r->get('answer');
-        $wA->status = 1;
-        $wA->save();
-        return response()->json($wA);
+        $writing = Writing::find($id);
+        $writing->status = 0;
+        $writing->save();
+        return response()->json($writing, 200);
     }
-    public function updateWritingAnswer(Request $r) //delete = update 'status'
+
+    //writing answer
+    public function getWritingAnswer($id){
+        $writeA = WritingAnswer::where('writing_id', '=', $id)->where('status', '=', 1)->get();
+        foreach ($writeA as $answer){
+            $answer->created_at_format = $answer->created_at ? $answer->created_at->format('d-m-Y') : "";
+            $answer->updated_at_format = $answer->updated_at ? $answer->updated_at->format('d-m-Y') : "";
+            $answer->student_name=$answer->student?$answer->student->full_name:"";
+        }
+        return response()->json($writeA, 200);
+    }
+    public function deleteWritingAnswer($id)
     {
-        $wA = WritingAnswer::find($r->get("id"));
-        $wA->writing_id = $r->get('writing_id');
-        $wA->student_id = $r->get('student_id');
-        $wA->answer = $r->get('answer');
-        $wA->status = $r->get('status');
-        $wA->save();
-        return response()->json($wA);
+        $writeA = WritingAnswer::find($id);
+        $writeA->status = 0;
+        $writeA->save();
+        return response()->json($writeA, 200);
     }
-    public function readWritingAnswer(Request $r) //delete = update 'status'
-    {
-        $wA = WritingAnswer::find($r->get("id"));
-        return response()->json($wA);
-    }
-    //result
-    public function createWritingResult(Request $r)
-    {
-        $wR = new  WritingResult();
-        $wR->student_id = $r->get('student_id');
-        $wR->lecture_id = $r->get('lecture_id');
-        $wR->lecture_id = $r->get('lecture_id');
-        $wR->point = $r->get('point');
-        $wR->comment = $r->get('comment');
-        $wR->status = 1;
-        $wR->save();
-        return response()->json($wR);
-    }
-    public function updateWritingResult(Request $r) //delete = update 'status'
-    {
-        $wR = WritingResult::find($r->get("id"));
-        $wR->writing_id = $r->get('writing_id');
-        $wR->student_id = $r->get('student_id');
-        $wR->answer = $r->get('answer');
-        $wR->status = $r->get('status');
-        $wR->save();
-        return response()->json($wR);
-    }
-    public function readWritingResult(Request $r) //delete = update 'status'
-    {
-        $wR = WritingResult::find($r->get("id"));
-        return response()->json($wR);
-    }
+
 }

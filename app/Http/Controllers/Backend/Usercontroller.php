@@ -130,7 +130,8 @@ class Usercontroller extends Controller
     {
         $users = User::all();
         foreach ($users as $user) {
-            $user->format_date = $user->created_at ? $user->created_at->format('d-m-Y') : "";
+            $user->format_created_at = $user->created_at ? $user->created_at->format('d-m-Y') : "";
+            $user->format_updated_at = $user->updated_at ? $user->updated_at->format('d-m-Y') : "";
             if ($user->is_lecture == 1 && $user->is_admin == 0) {
                 $user->position = "Lecturer";
             }
