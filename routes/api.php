@@ -44,7 +44,7 @@ Route::post('/deleteWriting/{id}', 'Backend\WritingController@deleteWriting');
 Route::get('/getWrite', 'Backend\WritingController@getWrite');
 //writingAnswer
 Route::post('/deleteWritingAnswer/{id}', 'Backend\WritingController@deleteWritingAnswer');
-Route::get('/getWritingAnswer/{id}', 'Backend\WritingController@getWritingAnswer');
+Route::get('/getWritingAnswer', 'Backend\WritingController@getWritingAnswer');
 //writingResult
 Route::post('/createWritingResult', 'Backend\WritingController@createWritingResult');
 Route::post('/updateWritingResult', 'Backend\WritingController@updateWritingResult');
