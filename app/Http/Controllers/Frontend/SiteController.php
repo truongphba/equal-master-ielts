@@ -35,6 +35,6 @@ class SiteController extends Controller
         $lecture = User::where('id', $id)->first();
         return response([
             'lecture' => $lecture
-        ],200);
+        ], 200);
     }
 }

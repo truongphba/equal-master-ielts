@@ -24,6 +24,7 @@ Route::middleware('jwt.refresh')->get('/token/refresh', 'Frontend\AuthController
 //Route::get('/result', 'Frontend\ResultController@index');
 //api Bằng viết
 Route::get('/index', 'Frontend\SiteController@index');
+Route::post('/exam','Frontend\ExamController@storeExam');
 Route::get('/listening', 'Frontend\ListeningController@listening');
 Route::get('/reading', 'Frontend\ReadingController@reading');
 Route::get('/writing', 'Frontend\WritingController@writing');
