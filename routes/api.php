@@ -16,10 +16,16 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('register', 'Frontend\AuthController@register');
 Route::post('login', 'Frontend\AuthController@login');
+Route::post('admin-login', 'Backend\LoginController@login');
 Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('auth', 'Frontend\AuthController@user');
     Route::post('logout', 'Frontend\AuthController@logout');
 });
+Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('admin-auth', 'Backend\LoginController@user');
+    Route::post('admin-logout', 'Backend\LoginController@logout');
+});
+
 Route::middleware('jwt.refresh')->get('/token/refresh', 'Frontend\AuthController@refresh');
 //Route::get('/result', 'Frontend\ResultController@index');
 //api Bằng viết
