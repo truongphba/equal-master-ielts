@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ResultSeeder::class);
         $this->call(ScheduleSeeder::class);
         $this->call(SpeakingSeeder::class);
-        $this->call(UserSeeder::class);
+//        $this->call(UserSeeder::class);
         $this->call(WritingAnswerSeeder::class);
         $this->call(WritingResultSeeder::class);
         $this->call(WritingSeeder::class);

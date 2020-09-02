@@ -46,7 +46,6 @@ class AuthController extends Controller
             'votes' => 5,
             'is_admin' => 0,
             'is_lecture' => $is_lecture,
-            'status' => 0,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
