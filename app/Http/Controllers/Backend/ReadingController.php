@@ -21,6 +21,9 @@ class ReadingController extends Controller
 
     public function createReading(Request $r)
     {
+        $r->validate([
+            'content' => 'required'
+        ]);
         $reading = new  Reading();
         $reading->content = $r->input('content');
         $reading->status = 1;
@@ -30,6 +33,9 @@ class ReadingController extends Controller
 
     public function updateReading(Request $r, $id)
     {
+        $r->validate([
+            'content' => 'required'
+        ]);
         $reading = Reading::find($id);
         $reading->content = $r->input('content');
         $reading->save();
@@ -57,6 +63,12 @@ class ReadingController extends Controller
 
     public function createReadingQuestion(Request $r)
     {
+        $r->validate([
+            'reading_id' => 'required',
+            'title' => 'required',
+            'answer' => 'required',
+            'correct_answer' => 'required',
+        ]);
         $question = new ReadingQuestion();
         $question->reading_id = $r->input('reading_id');
         $question->title = $r->input('question');
@@ -69,6 +81,12 @@ class ReadingController extends Controller
 
     public function updateReadingQuestion(Request $r, $id)
     {
+        $r->validate([
+            'reading_id' => 'required',
+            'title' => 'required',
+            'answer' => 'required',
+            'correct_answer' => 'required',
+        ]);
         $question = ReadingQuestion::find($id);
         $question->reading_id = $r->input('reading_id');
         $question->title = $r->input('question');
