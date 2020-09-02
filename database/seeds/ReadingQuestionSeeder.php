@@ -229,7 +229,7 @@ class ReadingQuestionSeeder extends Seeder
                 'id' => 22,
                 'reading_id' => 8,
                 'title' => ' Why is this email written?',
-                'answer' => 'To invite an employee to attend wedding.To apologize for a clerical mistake.To request a response from a customer,To complain about poor service',
+                'answer' => 'To invite an employee to attend wedding.To apologize for a clerical mistake.To request a response from a customer,To complain about poor Services',
                 'correct_answer' => '',
                 'status' => 1,
                 'created_at' => \Illuminate\Support\Carbon::now()->addDays(0)->format('Y-m-d H:i:s'),

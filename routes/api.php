@@ -53,6 +53,7 @@ Route::get('/readWritingResult', 'Frontend\WritingController@readWritingResult')
 Route::post('/createUser', 'Frontend\UserController@createUser');
 Route::post('/updateUser', 'Frontend\UserController@updateUser');
 Route::get('/readUser', 'Frontend\UserController@readUser');
-
+//paypal
+//Route::get('/paypal', 'Paypal\PaypalController@index');
 
 
