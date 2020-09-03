@@ -55,14 +55,14 @@ class ListeningController extends Controller
     public function createListeningQuestion(Request $r)
     {
         $r->validate([
-            'listening_id' => 'required',
+            'listening_id' => 'required | Numeric',
             'title' => 'required',
             'answer' => 'required',
             'correct_answer' => 'required',
         ]);
         $question = new ListeningQuestion();
         $question->listening_id = $r->input('listening_id');
-        $question->title = $r->input('question');
+        $question->title = $r->input('title');
         $question->answer = $r->input('answer');
         $question->correct_answer = $r->input('correct_answer');
         $question->status = 1;
@@ -73,13 +73,13 @@ class ListeningController extends Controller
     public function updateListeningQuestion(Request $r, $id)
     {
         $r->validate([
-            'listening_id' => 'required',
+            'listening_id' => 'required | Numeric',
             'title' => 'required',
             'answer' => 'required',
             'correct_answer' => 'required',
         ]);
         $question = ListeningQuestion::find($id);
-        $question->title = $r->input('question');
+        $question->title = $r->input('title');
         $question->answer = $r->input('answer');
         $question->correct_answer = $r->input('correct_answer');
         $question->save();
