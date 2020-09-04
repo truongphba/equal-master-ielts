@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\rc;
 use App\User;
+use http\Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
