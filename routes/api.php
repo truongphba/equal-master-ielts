@@ -51,6 +51,8 @@ Route::post('/updateWritingResult', 'Backend\WritingController@updateWritingResu
 Route::get('/readWritingResult', 'Backend\WritingController@readWritingResult');
 
 
+
+
 //crud User
 //<<<<<<< HEAD
 //Route::post('/createUser', 'Frontend\UserController@createUser');
