@@ -23,4 +23,5 @@ use PayPal\Api\Transaction;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::resource('payment','PaymentController');

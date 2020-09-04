@@ -14,6 +14,7 @@ use PayPal\Api\Payer;
 use PayPal\Api\Payment;
 use PayPal\Api\RedirectUrls;
 use PayPal\Api\Transaction;
+
 //use PayPal\Api\ExecutePayment;
 use PayPal\Api\PaymentExecution;
 
@@ -35,6 +36,31 @@ class PaymentController extends Controller
         $this->apiContext->setConfig(config('paypal.settings'));
     }
 
+    private function getPaymentList($limit = 100, $offset = 0)
+    {
+        $params = [
+            'count' => $limit,
+            'start_index' => $offset
+        ];
+        try {
+            $payments = Payment::all($params, $this->apiContext);
+        } catch (\PayPal\Exception\PPConnectionException $paypalException) {
+            throw new \Exception($paypalException->getMessage());
+        }
+        return $payments;
+    }
+
+    private function getPaymentDetails($paymentId)
+    {
+        try {
+            $paymentDetails = Payment::get($paymentId, $this->apiContext);
+        } catch (\PayPal\Exception\PPConnectionException $paypalException) {
+            throw new \Exception($paypalException->getMessage());
+        }
+
+        return $paymentDetails;
+    }
+
     public function index()
     {
         //
@@ -48,33 +74,64 @@ class PaymentController extends Controller
         $execution->setPayerId($request->input('PayerID'));
         $payment = Payment::get($payment_id, $this->apiContext);
         try {
+            $user = User::where('id', 2)->first();
             $result = $payment->execute($execution, $this->apiContext);
-            dd($result);
-        }catch (\Exception $e){
-    return "Failed";
+            $arr = $this->getPaymentList();
+            $his[] = null;
+            $r = (object)[
+                'payment_id' => $result->id,
+                'user_id' => $result->transactions[0]->description,
+                'money' => $result->transactions[0]->amount->total,
+                'time' => $result->update_time,
+            ];
+            if ($user->id == $r->user_id) {
+                $user->balance = $user->balance + $r->money;
+                $user->save();
+                foreach ($arr->payments as $item) {
+                    if ($item->transactions[0]->description == $user->id) {
+                        $his[] = (object)[
+                            'payment_id' => $item->id,
+                            'user_id' => $item->transactions[0]->description,
+                            'money' => $item->transactions[0]->amount->total,
+                            'time' => $item->update_time,
+                        ];
+                    }
+                }
+                dd([
+                    'payment' => $r,
+                    'history' => $his,
+                    'totalMoney'=>$user->balance
+                ]);
+            }
+        } catch (\Exception $e) {
+            return $e;
         }
 
     }
 
     public function store(Request $request)
     {
-        $user = User::where('id',"2")->first();
+        //thông tin Đức cần gửi cho
+        //1.user
+        $user = User::where('id', "2")->first();
+        //2. số tiền nập vào tài khoản
+        $money = 50;
+        //End
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
         $item1 = new Item();
-        $item1->setName('Nạp tiền vào tài khoản '.$user->name)
+        $item1->setName('Thanh toán tiền nạp vào hệ thống Luyện thi Ielt Equal Master Ielt cho tài khoản ' . $user->name)
             ->setCurrency('USD')
             ->setQuantity(1)
-            ->setSku("123123")
-            ->setPrice(20);
-        $item2 = new Item();
+            ->setPrice($money);
+//        $item2 = new Item();
 //        $item2->setName('Granola bars')
 //            ->setCurrency('USD')
 //            ->setQuantity(5)
 //            ->setSku("321321")
 //            ->setPrice(2);
-//        $itemList = new ItemList();
-//        $itemList->setItems(array($item1, $item2));
+        $itemList = new ItemList();
+        $itemList->setItems(array($item1));
 //
 //        $details = new Details();
 //        $details->setShipping(1.2)
@@ -83,21 +140,20 @@ class PaymentController extends Controller
 
         $amount = new Amount();
         $amount->setCurrency("USD")
-            ->setTotal(20);
+            ->setTotal($money);
 //            ->setDetails($details);
 
         $transaction = new Transaction();
         $transaction->setAmount($amount)
-//            ->setItemList($itemList)
-            ->setDescription("Thanh toán cho anh Bằng đẹp trai")
+            ->setItemList($itemList)
+            ->setDescription($user->id)
             ->setInvoiceNumber(uniqid());
-
         $redirectUrls = new RedirectUrls();
         $redirectUrls->setReturnUrl(route('payment.create'))
             ->setCancelUrl(route('payment.create'));
 
         $payment = new Payment();
-        $payment->setIntent("sale")
+        $payment->setIntent('sale')
             ->setPayer($payer)
             ->setRedirectUrls($redirectUrls)
             ->setTransactions(array($transaction));
