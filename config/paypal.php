@@ -6,7 +6,7 @@ return [
         'http.CURLOPT_CONNECTTIMEOUT' => 30,
         'mode' => 'sandbox', //live
         'log.LogEnabled' => true,
-        'log.FileName' => storage_path().'logs\paypal.php',
+        'log.FileName' => storage_path().'/logs/paypal.php',
         'log.LogLevel' => 'FINE'
     ],
 //    'client_id' => env('PAYPAL_CLIENT_ID'),
