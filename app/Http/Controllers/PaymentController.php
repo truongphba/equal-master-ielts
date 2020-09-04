@@ -114,9 +114,9 @@ class PaymentController extends Controller
     {
         //thông tin Đức cần gửi cho
         //1.user
-        $user = Auth::user();
+        $user = User::find(2);
         //2. số tiền nập vào tài khoản
-        $money = $request->get('amount');
+        $money = 99;
         //End
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");
@@ -150,7 +150,7 @@ class PaymentController extends Controller
             ->setDescription($user->id)
             ->setInvoiceNumber(uniqid());
         $redirectUrls = new RedirectUrls();
-        $redirectUrls->setReturnUrl('localhost:8080/payment-success')//route('payment.create')
+        $redirectUrls->setReturnUrl(route('payment.create'))//
             ->setCancelUrl(route('payment.create'));
 
         $payment = new Payment();

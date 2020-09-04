@@ -24,4 +24,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-//Route::resource('payment','PaymentController');
+Route::resource('payment','PaymentController');
