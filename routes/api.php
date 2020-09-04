@@ -38,6 +38,7 @@ Route::get('/listenHistory/{id}', 'Frontend\HistoryController@listenHistory');
 Route::get('/readHistory/{id}', 'Frontend\HistoryController@readHistory');
 Route::get('/speakHistory/{id}', 'Frontend\HistoryController@speakHistory');
 Route::get('/writeHistory/{id}', 'Frontend\HistoryController@writeHistory');
+Route::get('/history/{id}', 'Frontend\HistoryController@history');
 
 //writing
 Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
@@ -94,4 +95,4 @@ Route::post('/createSpeaking', 'Backend\SpeakingController@createSpeaking');
 Route::post('/updateSpeaking', 'Backend\SpeakingController@updateSpeaking');
 Route::get('/readSpeaking', 'Backend\SpeakingController@readSpeaking');
 
-
+Route::get('/money', 'Backend\DashboardController@getMoney');
