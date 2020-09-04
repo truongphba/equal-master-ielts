@@ -24,6 +24,8 @@ Route::group(['middleware' => 'jwt.auth'], function () {
 Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('admin-auth', 'Backend\LoginController@user');
     Route::post('admin-logout', 'Backend\LoginController@logout');
+    //paypall
+    Route::resource('payment','PaymentController');
 });
 
 Route::middleware('jwt.refresh')->get('/token/refresh', 'Frontend\AuthController@refresh');
