@@ -49,6 +49,10 @@ Route::get('/getWritingAnswer', 'Backend\WritingController@getWritingAnswer');
 Route::post('/createWritingResult', 'Backend\WritingController@createWritingResult');
 Route::post('/updateWritingResult', 'Backend\WritingController@updateWritingResult');
 Route::get('/readWritingResult', 'Backend\WritingController@readWritingResult');
+
+
+
+
 //crud User
 //<<<<<<< HEAD
 //Route::post('/createUser', 'Frontend\UserController@createUser');
