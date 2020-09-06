@@ -19,9 +19,12 @@ class CreateResultsTable extends Migration
             $table->unsignedBigInteger('lecture_id')->nullable();
             $table->foreign('student_id')->references('id')->on('users');
             $table->foreign('lecture_id')->references('id')->on('users');
-            $table->tinyInteger('type');
-            $table->integer('point');
-            $table->text('comment')->nullable();
+            $table->integer('listen_point');
+            $table->integer('read_point');
+            $table->integer('speak_point');
+            $table->integer('write_point');
+            $table->text('speak_comment')->nullable();
+            $table->text('write_comment')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->timestamps();
         });

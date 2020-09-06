@@ -1,7 +1,10 @@
 <?php
 
+use App\Examining;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,15 +22,23 @@ Route::post('login', 'Frontend\AuthController@login');
 Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('auth', 'Frontend\AuthController@user');
     Route::post('logout', 'Frontend\AuthController@logout');
+    Route::get('/reading', 'Frontend\ReadingController@reading');
+    Route::get('/listening', 'Frontend\ListeningController@listening');
+    Route::get('/speaking', 'Frontend\SpeakingExamController@speaking');
+    Route::post('/exam/update','Frontend\ExamController@updateExam');
+    Route::post('/exam/update-time','Frontend\ExamController@updateTime');
+    Route::get('/writing', 'Frontend\WritingController@writing');
+    Route::get('/checkExam', 'Frontend\ExamController@checkCurrentExam');
+    Route::get('/get-result', 'Frontend\ExamController@getResult');
+
 });
 Route::middleware('jwt.refresh')->get('/token/refresh', 'Frontend\AuthController@refresh');
 //Route::get('/result', 'Frontend\ResultController@index');
 //api Bằng viết
 Route::get('/index', 'Frontend\SiteController@index');
 Route::post('/exam','Frontend\ExamController@storeExam');
-Route::get('/listening', 'Frontend\ListeningController@listening');
-Route::get('/reading', 'Frontend\ReadingController@reading');
-Route::get('/writing', 'Frontend\WritingController@writing');
+Route::post('/exam/store-mark','Frontend\ExamController@storeMark')->middleware('cors');
+Route::post('/vote','Frontend\ExamController@submitVote')->middleware('cors');
 
 Route::get('/listenHistory/{id}', 'Frontend\HistoryController@listenHistory');
 Route::get('/readHistory/{id}', 'Frontend\HistoryController@readHistory');
@@ -37,10 +48,9 @@ Route::get('/writeHistory/{id}', 'Frontend\HistoryController@writeHistory');
 
 Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
 //writing
-//speaking
-Route::get('/speaking-question', 'Frontend\SpeakingController@speaking');
-Route::get('/lecture/{id}', 'Frontend\SiteController@getLecture');
 
+Route::get('/user/{id}', 'Frontend\SiteController@getUser');
+Route::get('/lecture-exam','Frontend\SiteController@lectureExam');
 //crud writing
 //writing
 Route::post('/createWriting', 'Backend\WritingController@createWriting');
@@ -93,4 +103,11 @@ Route::post('/createSpeaking', 'Backend\SpeakingController@createSpeaking');
 Route::post('/updateSpeaking', 'Backend\SpeakingController@updateSpeaking');
 Route::get('/readSpeaking', 'Backend\SpeakingController@readSpeaking');
 
+Route::get('/meetings', 'Zoom\MeetingController@list');
 
+// Create meeting room using topic, agenda, start_time.
+Route::post('/meetings', 'Zoom\MeetingController@create');
+
+// Get information of the meeting room by ID.
+Route::get('/meetings/{id}', 'Zoom\MeetingController@get')->where('id', '[0-9]+');
+Route::delete('/meetings/{id}', 'Zoom\MeetingController@delete')->where('id', '[0-9]+');
