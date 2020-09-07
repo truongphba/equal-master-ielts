@@ -12,50 +12,14 @@ use Illuminate\Support\Facades\Auth;
 
 class HistoryController extends Controller
 {
-    public function listenHistory($id)
+    public function history($id)
     {
-        $results = Result::where('student_id', '=', $id)->where('type', '=', 2)->orderBy('created_at', 'desc')->get();
+        $results = Result::where('student_id', '=', $id)->orderBy('created_at', 'desc')->get();
         foreach ($results as $result) {
             $result->student_name=$result->student?$result->student->full_name:"";
             $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
             $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y'):"";
             $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y'):"";
-        }
-        return response()->json($results, 200);
-    }
-
-    public function speakHistory($id){
-        $results = Result::where('student_id', '=', $id)->where('type', '=', 3)->orderByDesc('created_at')->get();
-        foreach ($results as $result) {
-            $result->student_name=$result->student?$result->student->full_name:"";
-            $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
-            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y'):"";
-            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y'):"";
-        }
-        return response()->json($results, 200);
-    }
-
-    public function readHistory($id){
-        $results = Result::where('student_id', '=', $id)->where('type', '=', 1)->orderByDesc('created_at')->get();
-        foreach ($results as $result) {
-
-            $result->student_name=$result->student?$result->student->full_name:"";
-            $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
-            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y'):"";
-            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y'):"";
-        }
-        return response()->json($results, 200);
-    }
-
-    public function writeHistory($id){
-        $results = WritingResult::where('student_id', '=', $id)->orderByDesc('created_at')->get();
-        foreach ($results as $result){
-
-            $result->student_name=$result->student?$result->student->full_name:"";
-            $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
-            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y'):"";
-            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y'):"";
-            $result->answer=$result->writingAnswer->answer;
         }
         return response()->json($results, 200);
     }

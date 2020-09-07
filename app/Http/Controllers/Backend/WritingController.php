@@ -21,6 +21,9 @@ class WritingController extends Controller
 
     public function createWriting(Request $r)
     {
+        $r->validate([
+            'content' => 'required',
+        ]);
         $writing = new  Writing();
         $writing->content = $r->input('content');
         $writing->status = 1;
@@ -30,6 +33,9 @@ class WritingController extends Controller
 
     public function updateWriting(Request $r, $id)
     {
+        $r->validate([
+            'content' => 'required',
+        ]);
         $writing = Writing::find($id);
         $writing->content = $r->input('content');
         $writing->save();

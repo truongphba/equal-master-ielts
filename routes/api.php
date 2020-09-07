@@ -19,6 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('register', 'Frontend\AuthController@register');
 Route::post('login', 'Frontend\AuthController@login');
+Route::post('admin-login', 'Backend\LoginController@login');
 Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('auth', 'Frontend\AuthController@user');
     Route::post('logout', 'Frontend\AuthController@logout');
@@ -32,6 +33,13 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('/get-result', 'Frontend\ExamController@getResult');
 
 });
+Route::group(['middleware' => 'jwt.auth'], function () {
+    Route::get('admin-auth', 'Backend\LoginController@user');
+    Route::post('admin-logout', 'Backend\LoginController@logout');
+    //paypall
+//    Route::resource('payment','PaymentController');
+});
+
 Route::middleware('jwt.refresh')->get('/token/refresh', 'Frontend\AuthController@refresh');
 //Route::get('/result', 'Frontend\ResultController@index');
 //api Bằng viết
@@ -44,6 +52,7 @@ Route::get('/listenHistory/{id}', 'Frontend\HistoryController@listenHistory');
 Route::get('/readHistory/{id}', 'Frontend\HistoryController@readHistory');
 Route::get('/speakHistory/{id}', 'Frontend\HistoryController@speakHistory');
 Route::get('/writeHistory/{id}', 'Frontend\HistoryController@writeHistory');
+Route::get('/history/{id}', 'Frontend\HistoryController@history');
 
 
 Route::get('/active-email', 'Frontend\AuthController@active')->name('active');
@@ -64,11 +73,22 @@ Route::get('/getWritingAnswer', 'Backend\WritingController@getWritingAnswer');
 Route::post('/createWritingResult', 'Backend\WritingController@createWritingResult');
 Route::post('/updateWritingResult', 'Backend\WritingController@updateWritingResult');
 Route::get('/readWritingResult', 'Backend\WritingController@readWritingResult');
+
+
+
+
 //crud User
+
 Route::post('/createUser', 'Backend\UserController@createUser');
 Route::post('/updateUser/{id}', 'Backend\UserController@updateUser');
 Route::get('/readUser', 'Backend\UserController@readUser');
 Route::get('/getUser', 'Backend\UserController@getUser');
+//<<<<<<< HEAD
+//Route::post('/createUser', 'Frontend\UserController@createUser');
+//Route::post('/updateUser', 'Frontend\UserController@updateUser');
+//Route::get('/readUser', 'Frontend\UserController@readUser');
+////paypal
+////Route::get('/paypal', 'Paypal\PaypalController@index');
 
 //api submit listen, read, write
 Route::post('/storeListen', 'Frontend\ListeningController@storeResult');
@@ -103,6 +123,7 @@ Route::post('/createSpeaking', 'Backend\SpeakingController@createSpeaking');
 Route::post('/updateSpeaking', 'Backend\SpeakingController@updateSpeaking');
 Route::get('/readSpeaking', 'Backend\SpeakingController@readSpeaking');
 
+
 Route::get('/meetings', 'Zoom\MeetingController@list');
 
 // Create meeting room using topic, agenda, start_time.
@@ -111,3 +132,6 @@ Route::post('/meetings', 'Zoom\MeetingController@create');
 // Get information of the meeting room by ID.
 Route::get('/meetings/{id}', 'Zoom\MeetingController@get')->where('id', '[0-9]+');
 Route::delete('/meetings/{id}', 'Zoom\MeetingController@delete')->where('id', '[0-9]+');
+
+Route::get('/money', 'Backend\DashboardController@getMoney');
+

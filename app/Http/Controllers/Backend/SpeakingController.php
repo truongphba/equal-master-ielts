@@ -10,6 +10,9 @@ class SpeakingController extends Controller
 {
     public function createSpeaking(Request $r)
     {
+        $r->validate([
+            'content' => 'required'
+        ]);
         $speaking = new  Speaking();
         $speaking->content = $r->get('content');
         $speaking->status = 1;
@@ -19,6 +22,9 @@ class SpeakingController extends Controller
 
     public function updateSpeaking(Request $r)
     {
+        $r->validate([
+            'content' => 'required'
+        ]);
         $speaking = Speaking::find($r->get("id"));
         $speaking->content = $r->get('content');
         $speaking->status = $r->get('status');
