@@ -76,7 +76,7 @@ class PaymentController extends Controller
         $execution->setPayerId($request->input('PayerID'));
         $payment = Payment::get($payment_id, $this->apiContext);
         try {
-            $user = User::where('id', 2)->first();
+            $user = User::where('id', 501)->first();
             $result = $payment->execute($execution, $this->apiContext);
             $arr = $this->getPaymentList();
             $his[] = null;
@@ -115,9 +115,9 @@ class PaymentController extends Controller
     {
         //thông tin Đức cần gửi cho
         //1.user
-        $user = User::find(2);
+        $user = User::where('id', 501)->first();
         //2. số tiền nập vào tài khoản
-        $money = 99;
+        $money = $request->input('amount');
         //End
         $payer = new Payer();
         $payer->setPaymentMethod("paypal");

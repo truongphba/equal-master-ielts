@@ -25,9 +25,8 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     Route::get('admin-auth', 'Backend\LoginController@user');
     Route::post('admin-logout', 'Backend\LoginController@logout');
     //paypall
-//    Route::resource('payment','PaymentController');
 });
-
+//Route::resource('payment','PaymentController');
 Route::middleware('jwt.refresh')->get('/token/refresh', 'Frontend\AuthController@refresh');
 //Route::get('/result', 'Frontend\ResultController@index');
 //api Bằng viết
@@ -109,3 +108,9 @@ Route::post('/updateSpeaking', 'Backend\SpeakingController@updateSpeaking');
 Route::get('/readSpeaking', 'Backend\SpeakingController@readSpeaking');
 
 Route::get('/money', 'Backend\DashboardController@getMoney');
+
+
+Route::post('addfund', 'AddFundController@create');
+Route::get('getFundAdmin', 'AddFundController@getFundAdmin');
+Route::post('updateFund/{id}', 'AddFundController@updateFund');
+Route::post('deleteFund/{id}', 'AddFundController@deleteFund');
