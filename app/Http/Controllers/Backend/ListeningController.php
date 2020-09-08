@@ -79,6 +79,7 @@ class ListeningController extends Controller
             'correct_answer' => 'required',
         ]);
         $question = ListeningQuestion::find($id);
+        $question->listening_id = $r->input('listening_id');
         $question->title = $r->input('title');
         $question->answer = $r->input('answer');
         $question->correct_answer = $r->input('correct_answer');
