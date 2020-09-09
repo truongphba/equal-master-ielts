@@ -64,7 +64,7 @@ class ReadingController extends Controller
     public function createReadingQuestion(Request $r)
     {
         $r->validate([
-            'reading_id' => 'required | numeric',
+            'reading_id' => 'required | numeric | min: 1 ',
             'title' => 'required',
             'answer' => 'required',
             'correct_answer' => 'required',
@@ -82,7 +82,7 @@ class ReadingController extends Controller
     public function updateReadingQuestion(Request $r, $id)
     {
         $r->validate([
-            'reading_id' => 'required | numeric',
+            'reading_id' => 'required | numeric | min: 1 ',
             'title' => 'required',
             'answer' => 'required',
             'correct_answer' => 'required',

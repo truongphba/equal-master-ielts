@@ -39,7 +39,7 @@ Route::group(['middleware' => 'jwt.auth'], function () {
     //paypall
     Route::resource('payment','PaymentController')->middleware('cors');
 });
-
+//Route::resource('payment','PaymentController');
 Route::middleware('jwt.refresh')->get('/token/refresh', 'Frontend\AuthController@refresh');
 //Route::get('/result', 'Frontend\ResultController@index');
 //api Bằng viết
@@ -134,4 +134,12 @@ Route::get('/meetings/{id}', 'Zoom\MeetingController@get')->where('id', '[0-9]+'
 Route::delete('/meetings/{id}', 'Zoom\MeetingController@delete')->where('id', '[0-9]+');
 
 Route::get('/money', 'Backend\DashboardController@getMoney');
+Route::get('/getTotal', 'Backend\DashboardController@getTotalMoney');
+Route::get('/getTotalMonth', 'Backend\DashboardController@getTotalByMonth');
+
+//add fund pages
+Route::post('addfund', 'AddFundController@create');
+Route::get('getFundAdmin', 'AddFundController@getFundAdmin');
+Route::post('updateFund/{id}', 'AddFundController@updateFund');
+Route::post('deleteFund/{id}', 'AddFundController@deleteFund');
 

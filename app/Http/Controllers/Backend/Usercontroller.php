@@ -33,7 +33,7 @@ class Usercontroller extends Controller
                 'name' => 'required|min:3|unique:App\User,name',
                 'email' => 'required|unique:App\User,email|email',
                 'password' => 'required|min:3',
-                'age' => 'numeric',
+                'age' => 'numeric | min:10 | max: 70',
                 'certificate' => 'required',
             ]);
             $is_lecture = 1;
@@ -42,7 +42,7 @@ class Usercontroller extends Controller
                 'name' => 'required|min:3|unique:App\User,name',
                 'email' => 'required|unique:App\User,email|email',
                 'password' => 'required|min:3',
-                'age' => 'numeric',
+                'age' => 'numeric | min:10 | max: 90',
             ]);
             $is_lecture = 0;
         }
@@ -73,7 +73,7 @@ class Usercontroller extends Controller
             $r->validate([
                 'name' => 'required',
                 'email' => 'required|email',
-                'age' => 'numeric',
+                'age' => 'numeric | min:10 | max: 90',
                 'certificate' => 'required',
             ]);
             $is_lecture = 1;
@@ -83,7 +83,7 @@ class Usercontroller extends Controller
             $r->validate([
                 'name' => 'required',
                 'email' => 'required| email|email',
-                'age' => 'numeric',
+                'age' => 'numeric | min:10 | max: 90',
             ]);
             $is_lecture = 0;
             $is_admin = 0;
@@ -92,7 +92,7 @@ class Usercontroller extends Controller
             $r->validate([
                 'name' => 'required',
                 'email' => 'required| email|email',
-                'age' => 'numeric',
+                'age' => 'numeric | min:10 | max: 90',
             ]);
             $is_lecture = 0;
             $is_admin = 1;
