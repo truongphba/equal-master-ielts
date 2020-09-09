@@ -135,6 +135,7 @@ Route::delete('/meetings/{id}', 'Zoom\MeetingController@delete')->where('id', '[
 
 Route::get('/money', 'Backend\DashboardController@getMoney');
 Route::get('/getTotal', 'Backend\DashboardController@getTotalMoney');
+Route::get('/getTotalMonth', 'Backend\DashboardController@getTotalByMonth');
 
 //add fund pages
 Route::post('addfund', 'AddFundController@create');

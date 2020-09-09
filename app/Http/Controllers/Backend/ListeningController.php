@@ -55,7 +55,7 @@ class ListeningController extends Controller
     public function createListeningQuestion(Request $r)
     {
         $r->validate([
-            'listening_id' => 'required | Numeric',
+            'listening_id' => 'required | Numeric | min: 1 ',
             'title' => 'required',
             'answer' => 'required',
             'correct_answer' => 'required',
@@ -73,7 +73,7 @@ class ListeningController extends Controller
     public function updateListeningQuestion(Request $r, $id)
     {
         $r->validate([
-            'listening_id' => 'required | Numeric',
+            'listening_id' => 'required | Numeric | min: 1 ',
             'title' => 'required',
             'answer' => 'required',
             'correct_answer' => 'required',

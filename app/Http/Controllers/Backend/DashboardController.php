@@ -27,4 +27,12 @@ class DashboardController extends Controller
             ->get();
         return response()->json($totals);
     }
+
+    public function getTotalByMonth(){
+        $totals = DB::table('exams')
+                ->select(DB::raw('MONTH(created_at) as month'), DB::raw('sum(money) as total'))
+            ->groupBy('month')
+            ->get();
+        return response()->json($totals);
+    }
 }
