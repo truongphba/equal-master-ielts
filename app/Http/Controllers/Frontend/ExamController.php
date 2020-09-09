@@ -22,6 +22,10 @@ class ExamController extends Controller
     public function storeExam(Request $request)
     {
         $student_id = $request->get('student_id');
+        $balance = User::where('id', $student_id)->first()->balance;
+        if ($balance < 22){
+             return response()->json(['msg' => 'Your balance is less then 22$'],400);
+        }
         $lecture_id = $request->get('lecture_id');
         $randomReading = Reading::inRandomOrder()->limit(3)->get();
         $randomListening = Listening::inRandomOrder()->limit(3)->get();
@@ -39,6 +43,8 @@ class ExamController extends Controller
         $exam->writing_question_1 = $randomWriting[0]->id;
         $exam->writing_question_2 = $randomWriting[1]->id;
         $exam->save();
+        return response()->json(null,200);
+
     }
 
     public function updateTime(Request $request)
@@ -106,46 +112,77 @@ class ExamController extends Controller
 
         $listening_questions_3 = ListeningQuestion::where('listening_id', $examining->listening_question_3)->get();
 
+        if (count($user_reading_answer_1) >= 3)
         foreach ($reading_questions_1 as $key => $item) {
             $countReading++;
             if (trim($reading_questions_1[$key]->correct_answer) == trim($user_reading_answer_1[$key])) {
                 $countTrueReading++;
             }
+        }else{
+            $countReading++;
+            $countTrueReading = 0;
         }
+
+        if (count($user_reading_answer_2) >= 3)
         foreach ($reading_questions_2 as $key => $item) {
             $countReading++;
             if (trim($reading_questions_2[$key]->correct_answer) == trim($user_reading_answer_2[$key])) {
                 $countTrueReading++;
             }
+        }else{
+            $countReading++;
+            $countTrueReading = 0;
         }
+
+        if (count($user_reading_answer_3) >= 3)
         foreach ($reading_questions_3 as $key => $item) {
             $countReading++;
             if (trim($reading_questions_3[$key]->correct_answer) == trim($user_reading_answer_3[$key])) {
                 $countTrueReading++;
             }
+        }else{
+            $countReading++;
+            $countTrueReading = 0;
         }
+
+        if (count($user_listening_answer_1) >= 3)
         foreach ($listening_questions_1 as $key => $item) {
             $countListening++;
             if (trim($listening_questions_1[$key]->correct_answer) == trim($user_listening_answer_1[$key])) {
                 $countTrueListening++;
             }
+        }else{
+            $countListening++;
+            $countTrueListening = 0;
         }
+
+        if (count($user_listening_answer_2) >= 3)
         foreach ($listening_questions_2 as $key => $item) {
             $countListening++;
             if (trim($listening_questions_2[$key]->correct_answer) == trim($user_listening_answer_2[$key])) {
                 $countTrueListening++;
             }
+        }else{
+            $countListening++;
+            $countTrueListening = 0;
         }
+
+        if (count($user_listening_answer_3) >= 3)
         foreach ($listening_questions_3 as $key => $item) {
             $countListening++;
             if (trim($listening_questions_3[$key]->correct_answer) == trim($user_listening_answer_3[$key])) {
                 $countTrueListening++;
             }
+        }else{
+            $countListening++;
+            $countTrueListening = 0;
         }
+
+        $readingPoint = ($countTrueReading / $countReading) * 10;
+        $listeningPoint = ($countTrueListening / $countListening) * 10;
         DB::beginTransaction();
         try {
-            $readingPoint = ($countTrueReading / $countReading) * 10;
-            $listeningPoint = ($countTrueListening / $countListening) * 10;
+
             $result = new Result();
             $result->student_id = $member_id;
             $result->lecture_id = $examining->lecture_id;
