@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\AddFund;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AddFundController extends Controller
 {
@@ -39,13 +41,27 @@ class AddFundController extends Controller
         if ($request->input('textStatus') == "Pending"){
             $status = 1;
         }
-        $fund = AddFund::find($id);
-        $fund->status = $status;
-        $fund->save();
-        return response()->json($fund, 200);
+        DB::beginTransaction();
+        try {
+            $fund = AddFund::find($id);
+            $fund->status = $status;
+            $fund->save();
+            if ($fund->status == 2){
+                $user = User::find($fund->user_id);
+                $user->balance += $fund->amount;
+                $user->save();
+            }
+            DB::commit();
+            return response()->json($fund, 200);
+        }catch (\Exception $e){
+            DB::rollBack();
+            return response()->json($e, 400);
+        }
+
+
     }
 
-    public function deleteFund(Request $request, $id){
+    public function deleteFund($id){
         $fund = AddFund::find($id);
         $fund->status = 0;
         $fund->save();
