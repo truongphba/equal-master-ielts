@@ -68,7 +68,6 @@ class Usercontroller extends Controller
 
     public function updateUser(Request $r, $id) //delete = update 'status'
     {
-
         if ($r->input('position') == "Lecturer") {
             $r->validate([
                 'name' => 'required',
@@ -82,7 +81,7 @@ class Usercontroller extends Controller
         if ($r->input('position') == "Student") {
             $r->validate([
                 'name' => 'required',
-                'email' => 'required| email|email',
+                'email' => 'required| email',
                 'age' => 'numeric | min:10 | max: 90',
             ]);
             $is_lecture = 0;

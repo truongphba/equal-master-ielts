@@ -23,4 +23,16 @@ class HistoryController extends Controller
         }
         return response()->json($results, 200);
     }
+
+    public function lecturerHistory($id)
+    {
+        $results = Result::where('lecture_id', '=', $id)->orderBy('created_at', 'desc')->get();
+        foreach ($results as $result) {
+            $result->student_name=$result->student?$result->student->full_name:"";
+            $result->lecture_name=$result->lecture?$result->lecture->full_name:"";
+            $result->created_at_format=$result->created_at?$result->created_at->format('d-m-Y'):"";
+            $result->updated_at_format=$result->updated_at?$result->updated_at->format('d-m-Y'):"";
+        }
+        return response()->json($results, 200);
+    }
 }
