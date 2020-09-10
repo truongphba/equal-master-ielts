@@ -186,8 +186,8 @@ class ExamController extends Controller
             $result = new Result();
             $result->student_id = $member_id;
             $result->lecture_id = $examining->lecture_id;
-            $result->listen_point = $listeningPoint;
-            $result->read_point = $readingPoint;
+            $result->listen_point = intval($listeningPoint);
+            $result->read_point = intval($readingPoint);
             $result->write_point = $writing_point;
             $result->speak_point = $speaking_point;
             $result->speak_comment = $speaking_comment;
