@@ -12,7 +12,7 @@ class ReadingQuestionSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+//        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         DB::table('reading_questions')->truncate();
         DB::table('reading_questions')->insert([
             [
@@ -317,6 +317,6 @@ class ReadingQuestionSeeder extends Seeder
             ],
 
         ]);
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+//        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

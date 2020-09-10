@@ -12,7 +12,7 @@ class ListeningQuestionSeeder extends Seeder
      */
     public function run()
     {
-        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
+//        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         DB::table('listening_questions')->truncate();
         DB::table('listening_questions')->insert([
             [
@@ -417,6 +417,6 @@ class ListeningQuestionSeeder extends Seeder
             ],
 
         ]);
-        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
+//        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }
