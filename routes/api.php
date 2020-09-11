@@ -136,6 +136,9 @@ Route::delete('/meetings/{id}', 'Zoom\MeetingController@delete')->where('id', '[
 
 Route::get('/money', 'Backend\DashboardController@getMoney')->middleware('cor2');
 Route::get('/getTotal', 'Backend\DashboardController@getTotalMoney')->middleware('cor2');
+Route::get('/getHelloTotal', function (){
+    return 'Hello';
+})->middleware('cor2');
 Route::get('/getTotalMonth', 'Backend\DashboardController@getTotalByMonth')->middleware('cor2');
 
 //add fund pages
