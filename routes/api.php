@@ -134,9 +134,9 @@ Route::post('/meetings', 'Zoom\MeetingController@create');
 Route::get('/meetings/{id}', 'Zoom\MeetingController@get')->where('id', '[0-9]+');
 Route::delete('/meetings/{id}', 'Zoom\MeetingController@delete')->where('id', '[0-9]+');
 
-Route::get('/money', 'Backend\DashboardController@getMoney')->middleware('cors');
-Route::get('/getTotal', 'Backend\DashboardController@getTotalMoney')->middleware('cors');
-Route::get('/getTotalMonth', 'Backend\DashboardController@getTotalByMonth')->middleware('cors');
+Route::get('/money', 'Backend\DashboardController@getMoney')->middleware('cor2');
+Route::get('/getTotal', 'Backend\DashboardController@getTotalMoney')->middleware('cor2');
+Route::get('/getTotalMonth', 'Backend\DashboardController@getTotalByMonth')->middleware('cor2');
 
 //add fund pages
 Route::post('addfund', 'AddFundController@create');
