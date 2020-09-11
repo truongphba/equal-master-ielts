@@ -63,6 +63,11 @@ Route::get('/user/{id}', 'Frontend\SiteController@getUser');
 Route::get('/lecture-exam','Frontend\SiteController@lectureExam');
 //crud writing
 //writing
+Route::group(['middleware' => 'cors'], function () {
+    Route::get('/money', 'Backend\DashboardController@getMoney');
+    Route::get('/getTotal', 'Backend\DashboardController@getTotalMoney');
+    Route::get('/getTotalMonth', 'Backend\DashboardController@getTotalByMonth');
+});
 Route::post('/createWriting', 'Backend\WritingController@createWriting');
 Route::post('/updateWriting/{id}', 'Backend\WritingController@updateWriting');
 Route::post('/deleteWriting/{id}', 'Backend\WritingController@deleteWriting');
@@ -134,9 +139,6 @@ Route::post('/meetings', 'Zoom\MeetingController@create');
 Route::get('/meetings/{id}', 'Zoom\MeetingController@get')->where('id', '[0-9]+');
 Route::delete('/meetings/{id}', 'Zoom\MeetingController@delete')->where('id', '[0-9]+');
 
-Route::get('/money', 'Backend\DashboardController@getMoney');
-Route::get('/getTotal', 'Backend\DashboardController@getTotalMoney');
-Route::get('/getTotalMonth', 'Backend\DashboardController@getTotalByMonth');
 
 //add fund pages
 Route::post('addfund', 'AddFundController@create');
