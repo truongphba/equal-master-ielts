@@ -66,7 +66,7 @@ Route::get('/lecture-exam','Frontend\SiteController@lectureExam');
 Route::post('/createWriting', 'Backend\WritingController@createWriting')->middleware('cors');
 Route::post('/updateWriting/{id}', 'Backend\WritingController@updateWriting')->middleware('cors');
 Route::post('/deleteWriting/{id}', 'Backend\WritingController@deleteWriting')->middleware('cors');
-Route::get('/getWrite', 'Backend\WritingController@getWrite')->middleware('cors');
+Route::get('/getWrite', 'Backend\WritingController@getWrite')->middleware('cor2');
 //writingAnswer
 Route::post('/deleteWritingAnswer/{id}', 'Backend\WritingController@deleteWritingAnswer');
 Route::get('/getWritingAnswer', 'Backend\WritingController@getWritingAnswer');
