@@ -63,9 +63,9 @@ Route::get('/user/{id}', 'Frontend\SiteController@getUser');
 Route::get('/lecture-exam','Frontend\SiteController@lectureExam');
 //crud writing
 //writing
-Route::post('/createWriting', 'Backend\WritingController@createWriting')->middleware('cors');
-Route::post('/updateWriting/{id}', 'Backend\WritingController@updateWriting')->middleware('cors');
-Route::post('/deleteWriting/{id}', 'Backend\WritingController@deleteWriting')->middleware('cors');
+Route::post('/createWriting', 'Backend\WritingController@createWriting')->middleware('cor2');
+Route::post('/updateWriting/{id}', 'Backend\WritingController@updateWriting')->middleware('cor2');
+Route::post('/deleteWriting/{id}', 'Backend\WritingController@deleteWriting')->middleware('cor2');
 Route::get('/getWrite', 'Backend\WritingController@getWrite')->middleware('cor2');
 //writingAnswer
 Route::post('/deleteWritingAnswer/{id}', 'Backend\WritingController@deleteWritingAnswer');
